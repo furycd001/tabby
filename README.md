@@ -24,5 +24,5 @@ cd tabby
 ## Running
 
 ```bash
-python 3 tabby.py
+python3 tabby.py
 ```
