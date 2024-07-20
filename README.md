@@ -2,7 +2,8 @@
 
 ![alt text](tabby.png "Tabby")
 
-This script extracts URLs from Firefox sessionstore files. It's useful for recovering tabs from session backups, especially when it's not possible to successfully restore a previous session.
+This is a script for extracting URLs from Firefox sessionstore files.  
+It's useful for recovering tabs from session backups, especially when it's not possible to successfully restore a previous session.
 
 ## Prerequisites
 
