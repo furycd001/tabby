@@ -20,13 +20,18 @@ def extract_urls(json_data):
 
 def main():
     parser = argparse.ArgumentParser(description="Extract URLs from Firefox sessionstore files.")
-    parser.add_argument("sessionstore_dir", help="Path to your sessionstore-backups directory")
-    parser.add_argument("session_file", help="Name of the session file to extract from (e.g., previous.jsonlz4)")
-
+    parser.add_argument('sessionstore_dir', help="Path to the sessionstore-backups directory.")
     args = parser.parse_args()
 
-    # Construct the full path to the session file
-    session_file = os.path.join(args.sessionstore_dir, args.session_file)
+    sessionstore_dir = args.sessionstore_dir
+
+    # Automatically select the latest session file
+    session_files = [f for f in os.listdir(sessionstore_dir) if f.endswith('.jsonlz4')]
+    if not session_files:
+        print("No .jsonlz4 files found in the directory.")
+        return
+
+    session_file = os.path.join(sessionstore_dir, max(session_files, key=lambda f: os.path.getmtime(os.path.join(sessionstore_dir, f))))
 
     # Decompress the session file
     decompressed_data = decompress_jsonlz4(session_file)
