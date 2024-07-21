@@ -24,5 +24,5 @@ cd tabby
 ## Running
 
 ```bash
-python3 tabby.py
+python3 tabby.py /path/to/firefox/sessionstore_dir/
 ```
